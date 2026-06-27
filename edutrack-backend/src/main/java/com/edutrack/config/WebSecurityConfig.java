@@ -67,16 +67,16 @@ public class WebSecurityConfig {
                 .exceptionHandling(exception -> exception.authenticationEntryPoint(unauthorizedHandler))
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/auth/**").permitAll()
-                        .requestMatchers("/api/uploads/**").permitAll()
-                        // Define role checks. Method-level security can also be used if needed.
-                        .requestMatchers("/api/teacher/**").hasRole("TEACHER")
-                        .requestMatchers("/api/student/**").hasRole("STUDENT")
-                        .requestMatchers("/api/attendance/**").hasAnyRole("TEACHER", "STUDENT")
-                        .requestMatchers("/api/reports/**").hasAnyRole("TEACHER", "STUDENT")
-                        .requestMatchers("/api/profile/**").hasAnyRole("TEACHER", "STUDENT")
-                        .requestMatchers("/api/metadata/**").hasAnyRole("TEACHER", "STUDENT")
-                        .anyRequest().authenticated()
+              
+                                .requestMatchers("/auth/**").permitAll()
+                                .requestMatchers("/uploads/**").permitAll()
+                                .requestMatchers("/teacher/**").hasRole("TEACHER")
+                                .requestMatchers("/student/**").hasRole("STUDENT")
+                                .requestMatchers("/attendance/**").hasAnyRole("TEACHER", "STUDENT")
+                                .requestMatchers("/reports/**").hasAnyRole("TEACHER", "STUDENT")
+                                .requestMatchers("/profile/**").hasAnyRole("TEACHER", "STUDENT")
+                                .requestMatchers("/metadata/**").hasAnyRole("TEACHER", "STUDENT")
+                                .anyRequest().authenticated()
                 );
 
         http.authenticationProvider(authenticationProvider());
