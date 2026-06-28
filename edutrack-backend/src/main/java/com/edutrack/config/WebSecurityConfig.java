@@ -68,7 +68,7 @@ public class WebSecurityConfig {
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
               
-                                .requestMatchers("/auth/**").permitAll()
+                                .requestMatchers("/", "/auth/**").permitAll()
                                 .requestMatchers("/uploads/**").permitAll()
                                 .requestMatchers("/teacher/**").hasRole("TEACHER")
                                 .requestMatchers("/student/**").hasRole("STUDENT")
